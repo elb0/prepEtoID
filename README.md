@@ -98,18 +98,20 @@ but I wanted to give a complete example of the workflow.
 
 <!-- end list -->
 
-    devtools::install_github("elb0/prepPS")
-    library(tidyverse)
-    
-    # read in all the files I need
-    ps_export <- read_csv("W10 Littering case study_Grades_2021_01_10.csv")
-    gradebook_export <- read_csv("2021-01-10T1302_Grades-STA490Y1_Y_LEC0101.csv")
-    roster_from_grouper <-
-     read_csv("Roster-STA490Y1 Y LEC0101 20209_Statistical Consultation, Communication, and Collaboration (formerly STA490H1).csv")
-    
-    # to find the name of the activity for the next line of code
-    names(gradebook_export)
-    
-    activity_name = "W10 Littering case study (479284)"
-    
-    prepPS::prep_peer(ps_export, gradebook_export, roster_from_grouper, activity_name)
+``` r
+devtools::install_github("elb0/prepPS")
+library(tidyverse)
+
+# read in all the files I need
+ps_export = read_csv("W10 Littering case study_Grades_2021_01_10.csv")
+gradebook_export = read_csv("2021-01-10T1302_Grades-STA490Y1_Y_LEC0101.csv")
+roster_from_grouper =
+ read_csv("Roster-STA490Y1 Y LEC0101 20209_Statistical Consultation, Communication, and Collaboration (formerly STA490H1).csv")
+
+# to find the name of the activity for the next line of code
+names(gradebook_export)
+
+activity_name = "W10 Littering case study (479284)"
+
+prepPS::prep_peer(ps_export, gradebook_export, roster_from_grouper, activity_name)
+```

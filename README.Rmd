@@ -90,14 +90,14 @@ The code below won't run for you because you don't have my student data, but I w
 5. Run the below code.
 6. Import the resulting csv to Quercus/Canvas.
 
-```
+``` r
 devtools::install_github("elb0/prepPS")
 library(tidyverse)
 
 # read in all the files I need
-ps_export <- read_csv("W10 Littering case study_Grades_2021_01_10.csv")
-gradebook_export <- read_csv("2021-01-10T1302_Grades-STA490Y1_Y_LEC0101.csv")
-roster_from_grouper <-
+ps_export = read_csv("W10 Littering case study_Grades_2021_01_10.csv")
+gradebook_export = read_csv("2021-01-10T1302_Grades-STA490Y1_Y_LEC0101.csv")
+roster_from_grouper =
  read_csv("Roster-STA490Y1 Y LEC0101 20209_Statistical Consultation, Communication, and Collaboration (formerly STA490H1).csv")
 
 # to find the name of the activity for the next line of code
