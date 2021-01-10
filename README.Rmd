@@ -90,7 +90,7 @@ The code below won't run for you because you don't have my student data, but I w
 5. Run the below code.
 6. Import the resulting csv to Quercus/Canvas.
 
-```
+``` r
 devtools::install_github("elb0/prepPS")
 library(tidyverse)
 
