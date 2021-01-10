@@ -23,7 +23,6 @@ prep_peer <-function(ps_export, gradebook_export, roster_from_grouper,
 
   names(gradebook_import)[7] <- activity_name
 
-  todays_date <- Sys.Date()
-  write_csv(gradebook_import, paste0("import_", activity_name, "_", todays_date, ".csv"))
+  write_csv(gradebook_import, paste0("import_", activity_name, "_", Sys.Date(), ".csv"))
 }
 
