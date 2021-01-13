@@ -1,21 +1,23 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# prepPS
+# prepEtoID
 
 This package sole purpose is to provide a convenience function for
-taking peerScholar grades and preparing them for Quercus (U of T’s
-version of Canvas).
+taking student information/grades linked to their emails (no UTORID or
+student ID) and preparing it for Quercus (U of T’s version of Canvas).
 
 ## Mise en place (i.e. what you want to have ready)
 
-  - The csv exported from peerScholar.
+  - The csv with student email and anything else needed to calculate or
+    indicate the grade. It will need to have, or be renamed to have the
+    columns `Email` and `Grade`. (Can have other columns, these will be
+    dropped in the final csv with no issues.)
   - The csv exported from your Canvas gradebook. Must have the
     assessment you want to process as a column.
   - The class roster, exported from the UT Advanced Group tool. Could be
     any csv with the columns `Student Number` and `Email` to allow you
-    to match as peerScholar uses email as the only uniique ID and the
-    Canvas gradebook doesn’t include emails, so I use student ID.
+    to match students in the two databased.
 
 ## Installation
 
@@ -23,7 +25,7 @@ You can install this package from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("elb0/prepPS")
+devtools::install_github("elb0/prepEtoID")
 ```
 
 You’ll also want the tidyverse on your side.
@@ -40,8 +42,8 @@ trying to mimic their automatic naming upon export to help make it
 easier for you to remember which is which.
 
 ``` r
-# this is the file from peerScholar
-ps_export <- read_csv("Activity-name_Grades_date.csv") 
+# this is the file from your source, e.g. MS Forms
+source_export <- read_xlsx("Activity-name_Grades_date.csv") 
 
 # this is the file you exported from the gradebook
 gradebook_export <- read_csv("datecode_Grades-course-section.csv") 
@@ -71,15 +73,13 @@ If you wanted it as a percentage, `total_points = 100`.
 
 ## Putting it all together
 
-prep\_peer, prepare, geddit?
-
 Running this (with all the above run, too) will then write a csv file
 named through `paste0("import_", activity_name, "_", Sys.Date(),
 ".csv")` to your working directory. This should be ready for upload to
 Quercus/Canvas.
 
 ``` r
-prep_peer(ps_export, gradebook_export, roster_from_grouper,
+prepEtoID(source_export, gradebook_export, roster_from_grouper,
                      activity_name)
 ```
 
@@ -99,11 +99,11 @@ but I wanted to give a complete example of the workflow.
 <!-- end list -->
 
 ``` r
-devtools::install_github("elb0/prepPS")
+devtools::install_github("elb0/prepEtoID")
 library(tidyverse)
 
 # read in all the files I need
-ps_export = read_csv("W10 Littering case study_Grades_2021_01_10.csv")
+source_export = read_csv("W10 Littering case study_Grades_2021_01_10.csv")
 gradebook_export = read_csv("2021-01-10T1302_Grades-STA490Y1_Y_LEC0101.csv")
 roster_from_grouper =
  read_csv("Roster-STA490Y1 Y LEC0101 20209_Statistical Consultation, Communication, and Collaboration (formerly STA490H1).csv")
@@ -113,5 +113,5 @@ names(gradebook_export)
 
 activity_name = "W10 Littering case study (479284)"
 
-prepPS::prep_peer(ps_export, gradebook_export, roster_from_grouper, activity_name)
+prepEtoID::prepEtoID(source_export, gradebook_export, roster_from_grouper, activity_name)
 ```
