@@ -90,7 +90,7 @@ devtools::install_github("elb0/prepEtoID")
 library(tidyverse)
 
 # read in all the files I need
-source_export = read_csv("W10 Littering case study_Grades_2021_01_10.csv")
+source_export = read_xlsx("W10 Littering case study_Grades_2021_01_10.xlsx")
 gradebook_export = read_csv("2021-01-10T1302_Grades-STA490Y1_Y_LEC0101.csv")
 roster_from_grouper =
  read_csv("Roster-STA490Y1 Y LEC0101 20209_Statistical Consultation, Communication, and Collaboration (formerly STA490H1).csv")

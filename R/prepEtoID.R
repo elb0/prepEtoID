@@ -18,12 +18,10 @@ prepEtoID <-function(source_export, gradebook_export, roster_from_grouper,
   gradebook_import <<- gradebook_export %>%
     filter(!is.na(ID)) %>%
     left_join(merge_for_id, by = c("Integration ID" = "Student Number")) %>%
-    select(1:6, "Grade")
+    select(1:6, "Grade") %>%
+    filter(!is.na(Grade))
 
   names(gradebook_import)[7] <- activity_name
-
-  # Let's you examine the result by putting gradebook_import in the Global Environment
-  assign(gradebook_import, envir = .GlobalEnv)
 
   write_csv(gradebook_import, paste0("import_", activity_name, "_", Sys.Date(), ".csv"))
 }
