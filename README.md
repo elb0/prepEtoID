@@ -43,7 +43,7 @@ easier for you to remember which is which.
 
 ``` r
 # this is the file from your source, e.g. MS Forms
-source_export <- read_xlsx("Activity-name_Grades_date.csv") 
+source_export <- read_excel("Activity-name_Grades_date.xlsx") 
 
 # this is the file you exported from the gradebook
 gradebook_export <- read_csv("datecode_Grades-course-section.csv") 
@@ -65,12 +65,6 @@ names(gradebook_export)
 activity_name = "Cool learing activity (123567)"
 ```
 
-If you want the grade to be out of a certain number of points, set
-`total_points`, otherwise if will give you a proportion, i.e. value
-\(\in\) \[0,1\].
-
-If you wanted it as a percentage, `total_points = 100`.
-
 ## Putting it all together
 
 Running this (with all the above run, too) will then write a csv file
@@ -88,7 +82,7 @@ prepEtoID(source_export, gradebook_export, roster_from_grouper,
 The code below won’t run for you because you don’t have my student data,
 but I wanted to give a complete example of the workflow.
 
-1.  Export grades from peerScholar.
+1.  Export grades from MS Forms.
 2.  Export gradebook from Quercus/Canvas.
 3.  Export roster from the UT Advanced Group Tool (need to activate in
     Navigation if you can’t see it).
